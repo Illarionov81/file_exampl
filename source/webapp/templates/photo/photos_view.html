@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load likes %}
+
+{% block title %}Gallery: {% endblock %}
+
+{% block contant %}
+
+    <div class="row">
+        <div class="col col-lg-6 ml-5">
+            <h1 class="pt-sm-3 pt-5 mt-sm-0 mt-5 word" ><b>Gallery: </b></h1>
+        </div>
+    </div>
+
+{% include 'partial/partial_list.html' %}
+
+<hr class="clear mt-5 pt-5">
+
+{% endblock %}
