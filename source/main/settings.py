@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
+    'webapp',
 ]
 
 MIDDLEWARE = [
@@ -119,3 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = 'webapp:photos'
+LOGOUT_REDIRECT_URL = 'webapp:photos'
+LOGIN_URL = 'accounts:login'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_URL = '/media/'
