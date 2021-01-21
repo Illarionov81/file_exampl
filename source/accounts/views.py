@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 
-from webapp.models import Favorites, Gallery
+# from webapp.models import Favorites, Gallery
 from .forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
@@ -64,9 +64,9 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user = User.objects.get(pk=self.kwargs.get('pk'))
-        favorites = Favorites.objects.filter(user=user.pk)
-        print(favorites)
-        context['gallery'] = favorites
+        # favorites = Favorites.objects.filter(user=user.pk)
+        # print(favorites)
+        # context['gallery'] = favorites
         return context
 
 
