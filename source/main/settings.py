@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
     'accounts',
     'webapp',
 ]
@@ -121,8 +122,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = 'webapp:photos'
-LOGOUT_REDIRECT_URL = 'webapp:photos'
+LOGIN_REDIRECT_URL = ''
+LOGOUT_REDIRECT_URL = ''
 LOGIN_URL = 'accounts:login'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')

@@ -45,14 +45,14 @@
             {% endfor %}
     <hr class="clear mt-5 pt-5">
 {#    {% include 'partial/partial_list.html' %}#}
-{#    {% for photo in gallery %}#}
+{#    {% for file in gallery %}#}
 {#        <div class="row">#}
 {#            <div class="col col-lg-12 pl-5">#}
 {#                <div class="box">#}
-{#                    <img src="{{ photo.photo.photo.url }}" width="300" height="200" alt="Foto">#}
-{#                    <b>Автор : <a href="{% url 'accounts:detail' photo.photo.author.pk %}"><b>{{ photo.photo.author }}. </b></a>  | Дата: {{ photo.photo.created_at | date:"Y-m-d H:m:s" }}</b>#}
+{#                    <img src="{{ file.file.file.url }}" width="300" height="200" alt="Foto">#}
+{#                    <b>Автор : <a href="{% url 'accounts:detail' file.file.author.pk %}"><b>{{ file.file.author }}. </b></a>  | Дата: {{ file.file.created_at | date:"Y-m-d H:m:s" }}</b>#}
 {#                </div>#}
-{#                <h3><a href="{% url 'webapp:one_photo_view' photo.pk %}"><b>Подпись: {{ photo.photo.signature }} </b></a> </h3>#}
+{#                <h3><a href="{% url 'webapp:one_photo_view' file.pk %}"><b>Подпись: {{ file.file.signature }} </b></a> </h3>#}
 {#            </div>#}
 {#        </div>#}
 {#    {% endfor %}#}

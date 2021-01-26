@@ -1,45 +1,47 @@
-{% load likes %}
-
-{% for photo in gallery %}
+{#{% load likes %}#}
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+{% for file in files %}
     <div class="box float-sm-left" >
-               <a href="{% url 'webapp:one_photo_view' photo.pk %}">
-                   <img src="{{photo.photo.url }}" width="300" height="200" alt="Foto">
-               </a>
+               <a href="{{ file.file.url }}" download>{{ file.name }}</a>
             <div class="text-center">
-                <b>{{ photo.signature }} </b><br>
-                <b>Автор :<a href="{% url 'accounts:detail' photo.author.pk %}"> {{ photo.author }}. </a>
-                    | Дата: {{ photo.created_at | date:"Y-m-d"}}</b>
-                {% if user.is_authenticated %}
-                {% with photo|liked_by:user as liked %}
-                    <div class="col col-lg-12">
-                        <a class="{% if liked %}hidden{% endif %} like" href="{% url 'webapp:favorites_add' photo.pk %}">Добавить в избранное</a>
-                        <a class="{% if not liked %}hidden{% endif %} unlike" href="{% url 'webapp:favorites_delete' photo.pk %}">Удалить из избранного</a>
-                    </div>
-                {% endwith %}
+                <b>{{ file.name}} Размер {{ file.file.size|filesizeformat }}</b><br>
+                {% if file.auyhor %}
+                    <b>Автор :<a href="{% url 'accounts:detail' file.author.pk %}"> {{ file.author }}. </a>
                 {% endif %}
+                    | Дата: {{ file.upload_date | date:"Y-m-d"}}</b>
+{#                {% if user.is_authenticated %}#}
+{#                {% with photo|liked_by:user as liked %}#}
+{#                    <div class="col col-lg-12">#}
+{#                        <a class="{% if liked %}hidden{% endif %} like" href="{% url 'webapp:favorites_add' photo.pk %}">Добавить в избранное</a>#}
+{#                        <a class="{% if not liked %}hidden{% endif %} unlike" href="{% url 'webapp:favorites_delete' photo.pk %}">Удалить из избранного</a>#}
+{#                    </div>#}
+{#                {% endwith %}#}
+{#                {% endif %}#}
             </div>
     </div>
 {% empty %}
-    <h2 class="text-center">Нет фотографий</h2>
+    <h2 class="text-center">Нет файлов</h2>
 {% endfor %}
 
-{#{% for photo in gallery %}#}
+{#{% for file in gallery %}#}
 {#    <div class="row">#}
 {#        <div class="col col-lg-12">#}
 {#            <div class="box">#}
-{#               <a href="{% url 'webapp:one_photo_view' photo.pk %}">#}
-{#                   <img src="{{photo.photo.url }}" width="300" height="200" alt="Foto">#}
+{#               <a href="{% url 'webapp:one_photo_view' file.pk %}">#}
+{#                   <img src="{{file.file.url }}" width="300" height="200" alt="Foto">#}
 {#               </a>#}
-{#                <b>Автор : {{ photo.author }}.  | Дата: {{ photo.created_at | date:"Y-m-d H:m:s"}}</b>#}
+{#                <b>Автор : {{ file.author }}.  | Дата: {{ file.created_at | date:"Y-m-d H:m:s"}}</b>#}
 {#            </div>#}
-{#            <h3><a href="{% url 'webapp:one_photo_view' photo.pk %}"><b>Подпись: {{ photo.signature }} </b></a> </h3>#}
+{#            <h3><a href="{% url 'webapp:one_photo_view' file.pk %}"><b>Подпись: {{ file.signature }} </b></a> </h3>#}
 {#        </div>#}
 {#     {% if user.is_authenticated %}#}
 {#        <p>#}
-{#            {% with photo|liked_by:user as liked %}#}
+{#            {% with file|liked_by:user as liked %}#}
 {#                <div class="col col-lg-12">#}
-{#                    <a class="{% if liked %}hidden{% endif %} like" href="{% url 'webapp:favorites_add' photo.pk %}">Добавить в избранное</a>#}
-{#                    <a class="{% if not liked %}hidden{% endif %} unlike" href="{% url 'webapp:favorites_delete' photo.pk %}">Удалить из избранного</a>#}
+{#                    <a class="{% if liked %}hidden{% endif %} like" href="{% url 'webapp:favorites_add' file.pk %}">Добавить в избранное</a>#}
+{#                    <a class="{% if not liked %}hidden{% endif %} unlike" href="{% url 'webapp:favorites_delete' file.pk %}">Удалить из избранного</a>#}
 {#                </div>#}
 {##}
 {#            {% endwith %}#}

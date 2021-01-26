@@ -18,8 +18,11 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 
+from webapp.views import FilesView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls'))
+    path('accounts/', include('accounts.urls')),
+    path('', FilesView.as_view(), name='files_view')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
